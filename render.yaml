@@ -1,0 +1,13 @@
+# Free synthetic demo: local SQLite data resets on redeployment/restart.
+services:
+  - type: web
+    name: maak-demo
+    runtime: docker
+    plan: free
+    autoDeployTrigger: commit
+    healthCheckPath: /api/health
+    envVars:
+      - key: MAAK_SECRET_KEY
+        generateValue: true
+      - key: MAAK_COOKIE_SECURE
+        value: "1"

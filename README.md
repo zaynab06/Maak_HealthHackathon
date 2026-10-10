@@ -23,6 +23,8 @@ These are planning budgets for the team's sprint, not measured implementation du
 
 ## Start the website
 
+For online hosting with automatic updates from GitHub, see [docs/HOSTING.md](docs/HOSTING.md). The included Render configuration uses a free service for synthetic demo data; its database can reset on restart or redeployment.
+
 Requirements: Python 3.12+ and Node 20.19+ or 22.12+ (validated here with Python 3.12.14 and Node 24.19.0). Run from the repository root:
 
 ```bash
