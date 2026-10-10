@@ -8,7 +8,7 @@ root = Path(__file__).resolve().parents[1]
 shots = root / 'test-results'
 shots.mkdir(exist_ok=True)
 roles = {
-    'Resident': ['Home', 'Care needs', 'My requests'],
+    'Patient or caregiver': ['Home', 'Care needs', 'My requests'],
     'Shelter coordinator': ['Home', 'Needs queue', 'Deliveries', 'My shelter'],
     'Donor': ['Opportunities', 'My pledges'],
     'Volunteer': ['Available tasks', 'My deliveries'],
@@ -28,7 +28,7 @@ with sync_playwright() as pw:
         page.get_by_role('button',name='Sign in',exact=True).click()
         expect(page.get_by_role('button',name='Sign out',exact=True)).to_be_visible()
         expect(page.locator('.loading')).not_to_be_visible()
-        if role == 'Resident':
+        if role == 'Patient or caregiver':
             page.evaluate('window.scrollTo(0,0)')
             page.screenshot(path=str(shots/'resident-desktop.png'),full_page=True)
         for width in [390, 768, 1440]:
@@ -42,11 +42,11 @@ with sync_playwright() as pw:
         page.get_by_role('button',name='Switch to Arabic',exact=True).click()
         expect(page.locator('html')).to_have_attribute('dir','rtl')
         page.evaluate('window.scrollTo(0,0)')
-        if role == 'Resident':
+        if role == 'Patient or caregiver':
             page.screenshot(path=str(shots/'resident-arabic-desktop.png'),full_page=True)
         page.set_viewport_size({'width':390,'height':844})
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth+1'), (role,'rtl-mobile')
-        if role == 'Resident':
+        if role == 'Patient or caregiver':
             page.screenshot(path=str(shots/'resident-arabic-mobile.png'),full_page=True)
         context.close()
     assert not errors,errors

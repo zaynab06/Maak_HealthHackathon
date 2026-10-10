@@ -87,7 +87,6 @@ export default function Login({ onLogin, sessionExpired }) {
       </header>
       <div className="login-grid">
         <section className="login-story">
-          <p className="eyebrow">{t("tagline")}</p>
           <h1>
             {t("welcomeTitle")
               .split("\n")
@@ -108,11 +107,11 @@ export default function Login({ onLogin, sessionExpired }) {
           <div className="story-points">
             <span>
               <CheckMark />
-              {t("yourNextAction")}
+              {t("welcomeRequests")}
             </span>
             <span>
               <CheckMark />
-              {t("privacyTitle")}
+              {t("welcomeCoordination")}
             </span>
           </div>
         </section>

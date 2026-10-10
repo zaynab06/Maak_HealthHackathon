@@ -39,7 +39,7 @@ def main():
         def request_card(page, reference):
             return page.locator('article.request-card').filter(has_text=reference)
 
-        resident = login('resident', 'Resident')
+        resident = login('resident', 'Patient or caregiver')
         resident.get_by_role('button', name='Request help', exact=True).click()
         dialog = resident.get_by_role('dialog')
         dialog.get_by_label('Quantity (kits)', exact=True).fill('10')
